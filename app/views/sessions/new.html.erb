@@ -1,13 +1,13 @@
-<%= render partial: "/errors", locals: {instance: @user} %>
+
 <h1> Login </h1>
 
-<%= form_for @user do |user| %>
+<%= form_tag '/login' do  %>
 
-  <%= user.label :username %>
-  <%= user.text_field :username %>
-  <%= user.label :password %>
-  <%= user.password_field :password %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
 
-  <%= user.submit "Login" %>
+  <%= submit_tag "Login" %>
 
 <% end %>

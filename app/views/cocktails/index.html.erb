@@ -4,7 +4,7 @@
 </header>
 
 <div class='index-container'>
-<button><%= link_to "Create Cocktail", new_user_cocktail_path(@cocktail) %></button><br><br>
+<button><%= link_to "Create Cocktail", new_user_cocktail_path(@user) %></button><br><br>
 
     <% @cocktails.each do |cocktail| %>
         <%= link_to cocktail.title, cocktail_path(cocktail) %><br>

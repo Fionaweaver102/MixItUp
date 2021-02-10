@@ -4,14 +4,19 @@ module ApplicationHelper
    end 
  
    def logged_in? 
-     !!current_user
+     session[:user_id] != nil 
    end 
+
+   def require_login
+    render 'errors', :static => "home" if session[:user_id].nil? 
+   end
+
+   def authenticate(user)
+    user && user.authenticate(params[:password])
+  end
 
    def find_cocktail 
     @cocktail = Cocktail.find(params[:id])
-    if @cocktail.user != current_user 
-      redirect_to user_path(current_user)
-    end 
   end 
 
   def find_ingredient

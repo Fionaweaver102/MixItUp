@@ -1,7 +1,8 @@
 <% render partial: '/errors', locals: {instance: @cocktail } %>
 
+<header>
 <h1>Edit Cocktail</h1>
+<header/>
 
-
-  <%= render 'form' %>
+  <%= render partial: 'form', locals: {cocktail: @cocktail, url:user_cocktail_path(current_user), user:current_user} %>
 

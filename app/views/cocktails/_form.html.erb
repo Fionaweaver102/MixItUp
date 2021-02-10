@@ -1,7 +1,9 @@
 
  <div class="container">
   <ul class ="ks-cboxtags">
-<%= form_for(@cocktail) do |f| %>
+<%= form_for cocktail, url:url do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
    <%= f.label :title, "Cocktail Title" %>
     <%= f.text_field :title %><br>
 
@@ -10,7 +12,7 @@
 
     <li><%= f.collection_check_boxes :ingredient_ids, Ingredient.all.uniq, :id, :name %><br></li>
 
-  <%= f.fields_for :ingredients, @cocktail.ingredients.build do |ingredient| %>
+  <%= f.fields_for :ingredients, cocktail.ingredients.build do |ingredient| %>
     <%= ingredient.label :name, "Other Ingredient" %><br>
     <%= ingredient.text_field :name %>
   <% end %>

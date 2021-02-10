@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :find_cocktail, only: [ :edit, :update, :destroy]
+  before_action :require_login, :find_cocktail, only: [:show, :edit, :update, :destroy]
 
   def index
     @user = current_user
@@ -13,7 +13,6 @@ class CocktailsController < ApplicationController
 
   def new
     @cocktail = current_user.cocktails.build
-    @user = current_user
   end
 
   def create
@@ -29,18 +28,21 @@ class CocktailsController < ApplicationController
   end
 
   def update
-      @cocktail.update(cocktail_params)
-      redirect_to user_cocktail_path(current_user, @cocktail)
+      if @cocktail.update(cocktail_params)
+      redirect_to cocktail_path(@cocktail)
+      else 
+        render :edit 
+      end 
   end
 
   def destroy
     @cocktail.delete
-    redirect_to user_cocktails_path(current_user)
+    redirect_to cocktails_path(current_user)
   end
 
   private 
 
   def cocktail_params
-    params.require(:cocktail).permit(:user_id, :title, :date_created, :image, ingredient_ids: [], ingredient_attributes: [:name])
+    params.require(:cocktail).permit(:title, :date_created, :image, ingredient_ids: [], ingredient_attributes: [:name])
   end 
 end

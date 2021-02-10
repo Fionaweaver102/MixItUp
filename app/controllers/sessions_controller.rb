@@ -1,20 +1,23 @@
 class SessionsController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create, :google]
 
-def new #login
-  @user = User.new
-end
+ def new #login
+ end
 
 def create
   @user = User.find_by(username: params[:username])
-  if !@user
+  if @user.nil?
     @error = "Username is invalid."
     render :new
-  elsif !user.authenticate(params[:password])
-    @error =  "Password is invalid"
-    render :new  
   else 
-    session[:user_id] = @user.id
-    redirect_to cocktails_path 
+    if authenticate(@user)
+      session[:user_id] = @user.id
+      redirect_to cocktails_path  
+    else 
+      @error = "Invalid password" 
+      render :new
+    end 
   end
 end
 

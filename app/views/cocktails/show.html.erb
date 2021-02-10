@@ -15,9 +15,12 @@
 <%= c.instructions %>
 <% end %>
 
-<% if @cocktail.user == current_user %>
-  <button><%= link_to "Edit Cocktail", edit_user_cocktail_path(current_user.id, @cocktail.id), method: :get %></button>
-  <%= form_tag [@user, @cocktail], :html => { :method => "delete" } do %>
+<%= @cocktail.user_id %>!!
+<%= current_user.id %>
+
+<% if @cocktail.user_id == current_user.id %>
+  <button><%= link_to "Edit Cocktail", edit_user_cocktail_path(current_user) %></button>
+  <%= form_tag user_cocktail_path(@cocktail.user_id), :method => "delete"  do %>
     <%= submit_tag "Delete Cocktail" %>
   <% end %>
 <% end %>
