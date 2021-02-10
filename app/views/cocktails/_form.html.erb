@@ -1,0 +1,22 @@
+
+ <div class="container">
+  <ul class ="ks-cboxtags">
+<%= form_for(@cocktail) do |f| %>
+   <%= f.label :title, "Cocktail Title" %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :image %>
+    <%= f.url_field :image %><br>
+
+    <li><%= f.collection_check_boxes :ingredient_ids, Ingredient.all.uniq, :id, :name %><br></li>
+
+  <%= f.fields_for :ingredients, @cocktail.ingredients.build do |ingredient| %>
+    <%= ingredient.label :name, "Other Ingredient" %><br>
+    <%= ingredient.text_field :name %>
+  <% end %>
+
+    <%= f.date_field :date_created %>
+  <%= f.submit %>
+<% end %>
+</ul>
+</div>

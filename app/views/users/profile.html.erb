@@ -1,0 +1,14 @@
+<h1> Your Profile </h1>
+
+<br><%= @user.first_name %> <%= @user.last_name %><br>
+
+<%= @user.username %>
+<%= @user.email %>
+
+<% @user.cocktails.each do |c| %>
+  <%= c.title %>
+<% end %>
+
+
+<%= link_to "Edit Profile", edit_user_url(@user), method: :get %>
+<%= link_to "Delete Profile", user_path(@user), data: {confirm: "Are you sure you want to delete your profile?"}, method: :delete %>

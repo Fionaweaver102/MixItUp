@@ -1,0 +1,13 @@
+<%= render partial: "/errors", locals: {instance: @user} %>
+<h1> Login </h1>
+
+<%= form_for @user do |user| %>
+
+  <%= user.label :username %>
+  <%= user.text_field :username %>
+  <%= user.label :password %>
+  <%= user.password_field :password %>
+
+  <%= user.submit "Login" %>
+
+<% end %>

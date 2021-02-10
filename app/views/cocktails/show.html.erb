@@ -1,0 +1,24 @@
+
+<header>
+  <h1><%=@cocktail.title%></h1>
+</header>
+  <img src="<%= @cocktail.image %>" alt="cocktail"><br>
+
+
+<ul>
+  <% @cocktail.ingredients.all.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+
+<% @cocktail.cocktail_ingredients.each do |c| %>
+<%= c.instructions %>
+<% end %>
+
+<% if @cocktail.user == current_user %>
+  <button><%= link_to "Edit Cocktail", edit_user_cocktail_path(current_user.id, @cocktail.id), method: :get %></button>
+  <%= form_tag [@user, @cocktail], :html => { :method => "delete" } do %>
+    <%= submit_tag "Delete Cocktail" %>
+  <% end %>
+<% end %>
+

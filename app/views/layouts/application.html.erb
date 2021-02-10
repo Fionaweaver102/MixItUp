@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MixItUpRailsProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <% if logged_in? %>
+    <button><%= link_to "Profile", user_profile_path(current_user) %></button>
+    <button><%= link_to "All Cocktails", cocktails_path %></button>
+    <button><%= link_to "Logout", logout_path %></button>
+  <% end %>
+    <%= yield %>
+  </body>
+</html>
