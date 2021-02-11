@@ -2,13 +2,12 @@
 <header>
   <h1>Cocktails</h1>
 </header>
-
+<button><%= link_to "Create Cocktail", new_user_cocktail_path(@user)%></button>
 <div class='index-container'>
-<button><%= link_to "Create Cocktail", new_user_cocktail_path(@user) %></button><br><br>
-
+<br>
     <% @cocktails.each do |cocktail| %>
-        <%= link_to cocktail.title, cocktail_path(cocktail) %><br>
-        <img src="<%= cocktail.image %>" alt="cocktail"><br>
+        <%= link_to cocktail.title, cocktail_path(cocktail) %>
+        <img src="<%= cocktail.image %>" alt="cocktail">
         <%= cocktail.date_created %>
         <br><br>
     <% end %>

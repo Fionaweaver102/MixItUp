@@ -11,13 +11,15 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #080702;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #413939, #ebb6f8);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url(https://media.cntraveler.com/photos/5f86eb161728afd66720d759/4:3/w_1776,h_1332,c_limit/DearIrvingontheHudson-RooftopBar-NYC-2020-5.jpg);
     
+        
+}
+
+.index-container {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 20px;
 }
 
 .container {

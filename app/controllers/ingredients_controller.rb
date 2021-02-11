@@ -18,6 +18,12 @@ class IngredientsController < ApplicationController
     redirect_to user_cocktail_path(current_user)
   end
 
+  # def search 
+  #   if !params[:name].blank?
+  #     @alcohal = Ingredient.all.where(name: "Vodka" || name: "Gin")
+  #   else 
+      
+
   private 
 
   def cocktail_ingredient_params

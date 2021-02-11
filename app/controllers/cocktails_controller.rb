@@ -3,7 +3,12 @@ class CocktailsController < ApplicationController
 
   def index
     @user = current_user
+    # @alcohol = Ingredient.all 
+    # if !params[:ingredient].blank?
+    #   @cocktail = Cocktail.by_alcohol(params[:ingredient])
+    # else 
     @cocktails = Cocktail.all
+    # end 
   end
 
   def show
@@ -33,7 +38,7 @@ class CocktailsController < ApplicationController
       else 
         render :edit 
       end 
-  end
+  end 
 
   def destroy
     @cocktail.delete

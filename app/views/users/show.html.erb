@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<header>
+  <h1>
+    <%= "#{@user.first_name}'s Cocktails" %>
+  </h1>
+</header>
+
+  
+    <% @user.cocktails.each do |c| %>
+      <%= link_to c.title, cocktail_path(c) %><br>
+      <img src="<%= c.image %>" alt="cocktail"><br>
+      <%= c.date_created %>
+    <% end %>
+

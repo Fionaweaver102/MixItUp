@@ -22,11 +22,16 @@ def show
 end 
 
 def edit
+  @user = current_user
 end 
 
 def update 
-  @user.update(user_params)
-  redirect_to profile_path(@user)
+  @user = current_user
+ if @user.update(user_params)
+  redirect_to user_profile_path(@user)
+ else 
+  render :edit
+ end 
 end 
 
 def destroy  
