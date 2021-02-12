@@ -1,13 +1,23 @@
-<header>
-  <h1>
-    <%= "#{@user.first_name}'s Cocktails" %>
-  </h1>
-</header>
+<div class="user-show">
+  <header>
+    <h1>
+      <%= "#{@user.first_name}'s Cocktails" %>
+    </h1>
+  </header>
 
-  
-    <% @user.cocktails.each do |c| %>
-      <%= link_to c.title, cocktail_path(c) %><br>
-      <img src="<%= c.image %>" alt="cocktail"><br>
-      <%= c.date_created %>
-    <% end %>
+    <button><%= link_to "Create Cocktail", new_user_cocktail_path(@user)%></button><br><br>
+
+  <div class="card-container">
+      <% @user.cocktails.each do |c| %>
+        <div class="cocktail-card">
+
+        <img src="<%= c.image %>" alt="cocktail"><br>
+        <h2>
+          <%= link_to c.title, cocktail_path(c) %><br>
+        </h2>
+          <%= c.date_created %>
+        </div>
+      <% end %>
+  </div>
+</div>
 

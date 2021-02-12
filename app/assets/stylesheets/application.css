@@ -14,4 +14,46 @@
  *= require_self
  */
 
+ body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #FFEFBA;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #774545, #e295dc);
+}
+
+header {
+  display: flex;
+  color: white;
+}
+
+header:before,
+header:after {
+  content: '';
+  margin: auto 1em;
+  border-bottom: solid 1px;
+  flex: 1;
+}
+
+h1 {
+  position: relative;
+  padding: 0.25em 1em;
+  overflow: hidden;
+  background: linear-gradient(currentcolor, currentcolor) no-repeat top center, linear-gradient(currentcolor, currentcolor) no-repeat bottom center;
+  background-size: calc(100% - 1.65em) 1px;
+}
+
+ .profile {
+  color: black
+}
  

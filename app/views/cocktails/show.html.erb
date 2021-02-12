@@ -2,22 +2,23 @@
 <header>
   <h1><%=@cocktail.title%></h1>
 </header>
+<div class="cocktail-show">
+
   <img src="<%= @cocktail.image %>" alt="cocktail"><br>
 
-
-<ul>
+<div class="tasks">
+<h1>Ingredients Needed </h1>
   <% @cocktail.ingredients.all.each do |ingredient| %>
-  <li><%= ingredient.name %></li>
+  <label>
+    <h2><%= ingredient.name %></h2>
+  </label>
   <% end %>
-</ul>
+
 
 <% @cocktail.cocktail_ingredients.each do |c| %>
 <%= c.instructions %>
 <% end %>
-
-<%= @cocktail.user_id %>!!
-<%= current_user.id %>
-
+  
 <% if @cocktail.user_id == current_user.id %>
   <button><%= link_to "Edit Cocktail", edit_user_cocktail_path(current_user) %></button>
   <%= form_tag user_cocktail_path(@cocktail.user_id), :method => "delete"  do %>
@@ -25,3 +26,4 @@
   <% end %>
 <% end %>
 
+<div>

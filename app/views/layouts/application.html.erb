@@ -11,7 +11,8 @@
 
   <body>
    <% if logged_in? %>
-    <button><%= link_to "Profile", user_profile_path(current_user) %></button>
+
+    <button class="profile"><%= link_to "Profile", user_profile_path(current_user) %></button>
     <button><%= link_to "All Cocktails", cocktails_path %></button>
     <button><%= link_to "Logout", logout_path %></button>
   <% end %>
