@@ -10,14 +10,12 @@ def create
   if @user.nil?
     @error = "Username is invalid."
     render :new
+  elsif !authenticate(@user) 
+    @error = "Invalid password" 
+    render :new
   else 
-    if authenticate(@user)
-      session[:user_id] = @user.id
-      redirect_to cocktails_path  
-    else 
-      @error = "Invalid password" 
-      render :new
-    end 
+    session[:user_id] = @user.id
+    redirect_to cocktails_path  
   end
 end
 
@@ -41,32 +39,14 @@ def google
   end 
 end
 
-def facebook
-  # @user = User.find_or_create_by(username: auth['info']['username']) do |u|
-  #   u.first_name = auth['info']['name']
-  #   u.email = auth['info']['email']
-   
-  #   u.password = SecureRandom.hex(10)
-  #   # u.image = auth['info']['image']
-  # end
-  # if @user && @user.id 
-  #   session[:user_id] = @user.id
-  #   redirect_to cocktails_path
-  # else 
-  #   redirect_to root_path
-  # end 
-end
-
-
 private 
 
-def auth
-  request.env['omniauth.auth']
-end 
+  def auth
+    request.env['omniauth.auth']
+  end 
 
-def user_params
-  params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
-end 
-
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
+  end 
 end
 

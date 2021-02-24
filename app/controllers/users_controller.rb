@@ -7,9 +7,8 @@ def new #signup
 end
 
 def create
-  @user = User.create!(user_params)
-  if @user.valid? 
-    @user.save 
+  @user = User.new(user_params)
+  if @user.save 
     session[:user_id] = @user.id
     redirect_to cocktails_path 
   else 
@@ -31,6 +30,7 @@ def update
  if @user.update(user_params)
   redirect_to user_profile_path(@user)
  else 
+  @error = @user.errors.full_messages 
   render :edit
  end 
 end 

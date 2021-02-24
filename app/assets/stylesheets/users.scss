@@ -1,3 +1,54 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+html, body {
+ 
+ 
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #444;
+  -webkit-font-smoothing: antialiased;
+  background: #f0f0f0;
+   
+}
+
+#container {
+  position: fixed;
+  width: 340px;
+  height: 280px;
+  top: 30%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -170px;
+}
+
+form {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+label {
+  color: #555;
+  display: inline-block;
+  margin-left: 18px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+
+input {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 12px;
+  outline: none;
+}
+
+input[type=text],
+input[type=password] {
+  color: #777;
+  padding-left: 10px;
+  margin: 10px;
+  margin-top: 12px;
+  margin-left: 18px;
+  width: 290px;
+  height: 35px;
+}
+
+
+
+

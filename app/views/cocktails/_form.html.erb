@@ -1,14 +1,22 @@
+<% if @error %>
+<%= render partial: '/errors', locals: {instance: @cocktail } %>
+<% end %>
 
  <div class="container">
   <ul class ="ks-cboxtags">
 <%= form_for cocktail, url:url do |f| %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-   <%= f.label :title, "Cocktail Title" %>
+   <%= f.label :title %>
     <%= f.text_field :title %><br>
 
     <%= f.label :image %>
     <%= f.url_field :image %><br>
+
+        <%= f.fields_for :cocktail_ingredients, cocktail.cocktail_ingredients.build do |i| %>
+          <%= i.label :instructions %>
+          <%= i.text_area :instructions %>
+        <% end %> <br><br>
 
     <li><%= f.collection_check_boxes :ingredient_ids, Ingredient.all.uniq, :id, :name %><br></li>
 

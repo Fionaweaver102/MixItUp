@@ -25,6 +25,7 @@ class CocktailsController < ApplicationController
       if @cocktail.save
        redirect_to cocktail_path(@cocktail)
     else 
+      @error = @cocktail.errors.full_messages 
       render :new
     end 
   end
