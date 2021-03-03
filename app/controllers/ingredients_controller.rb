@@ -17,14 +17,8 @@ class IngredientsController < ApplicationController
     find_ingredient
     @cocktail.ingredients.delete(@cocktail)
     redirect_to user_cocktail_path(current_user)
-  end
-
-  # def search 
-  #   if !params[:name].blank?
-  #     @alcohal = Ingredient.all.where(name: "Vodka" || name: "Gin")
-  #   else 
+  end 
       
-
   private 
 
   def cocktail_ingredient_params

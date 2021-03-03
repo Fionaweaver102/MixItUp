@@ -30,6 +30,10 @@ body {
   background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #774545, #e295dc);
+  padding-bottom: 100%;
+  button {
+    padding-left: left: ;
+  }
 }
 
 header {

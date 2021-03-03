@@ -2,4 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.welcome-page button {
+  padding: 20px 100px;
+  background-color:  rgb(255, 251, 254);
+  border-radius: 15px;
+  a{
+    color:rgb(12, 11, 11)
+  }
+}
 
+.welcome-page p {
+  color:white;
+}
+
+.welcome-page {
+  padding-bottom: 100%;
+  background-image: url("https://cdn.luxe.digital/media/2020/06/07192740/best-cocktails-recipes-luxe-digital.jpg")
+}

@@ -3,6 +3,13 @@
     <h1>Cocktails</h1>
   </header>
 
+    <%= form_tag("/cocktails", method: "get") do %>
+      <%= select_tag "ingredient", options_from_collection_for_select(@ingredients, "id", "name"), include_blank: true %>
+      <%= submit_tag "Filter By Ingredient" %>
+    <% end %>
+    
+<br><br>
+
     <button><%= link_to "Create Cocktail", new_user_cocktail_path(@user)%></button><br><br>
 
   <div class='card-container'>

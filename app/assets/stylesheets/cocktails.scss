@@ -15,7 +15,7 @@
 
 body{
   text-align: center;
-  font-size: 100%
+  font-size: 100%;
 }
 
 ul.ks-cboxtags {
@@ -109,6 +109,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   grid-template-columns: 30% 30% 30%;
   grid-gap: 20px;
   padding-left: 50px;
+  background: linear-gradient(to right, #774545, #e295dc);
   
 }
 
@@ -116,7 +117,10 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   max-height:50%;
   max-width: 50%;
   border-radius: 15px;
+}
 
+.cocktail-show {
+  display: flex;
 }
 
 .card-container img {
@@ -168,6 +172,12 @@ h1{
   left: 0px; 
   right: 0px;
   margin: 0px auto;
+}
+
+.tasks p {
+  background: #ae5f75;
+  box-sizing: border-box;
+  color: white
 }
 input[type=checkbox] {
   display: none;

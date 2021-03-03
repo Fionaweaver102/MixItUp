@@ -1,14 +1,18 @@
 class CocktailsController < ApplicationController
   before_action :require_login, :find_cocktail, only: [:show, :edit, :update, :destroy]
+  helper_method :params 
 
   def index
     @user = current_user
-    # @alcohol = Ingredient.all 
-    # if !params[:ingredient].blank?
-    #   @cocktail = Cocktail.by_alcohol(params[:ingredient])
-    # else 
-    @cocktails = Cocktail.all
-    # end 
+    @ingredients = Ingredient.all
+
+    if !params[:ingredient].blank?
+      ingredient = Ingredient.where(id: params[:ingredient]).first
+      @cocktails = ingredient.cocktails
+    else 
+      @cocktails = Cocktail.all
+    end 
+ 
   end
 
   def show
@@ -44,8 +48,8 @@ class CocktailsController < ApplicationController
   def destroy
     @cocktail.delete
     redirect_to cocktails_path(current_user)
-  end
-
+  end 
+ 
   private 
 
   def cocktail_params
