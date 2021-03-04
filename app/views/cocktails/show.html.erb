@@ -13,11 +13,10 @@
     <h2><%= ingredient.name %></h2>
   </label>
   <% end %>
-
-<h1>Instructions </h1>
+  
 <p>
-<% @cocktail.cocktail_ingredients.each do |c| %>
-<%= c.instructions %>
+<% @cocktail.cocktail_ingredients.all.each do |f| %>
+  <%= f.amount %>
 <% end %>
 </p>
 

@@ -1,5 +1,5 @@
 <% if @error %>
-<%= render partial: '/errors', locals: {instance: @cocktail } %>
+<h3><%= render partial: '/errors', locals: {instance: @cocktail } %></h3>
 <% end %>
 
  <div class="container">
@@ -13,12 +13,12 @@
     <%= f.label :image %>
     <%= f.url_field :image %><br>
 
-        <%= f.fields_for :cocktail_ingredients, cocktail.cocktail_ingredients.build do |i| %>
-          <%= i.label :instructions %>
-          <%= i.text_area :instructions %>
-        <% end %> <br><br>
+    <%= f.fields_for :cocktails do |i| %>
+          <%= i.collection_select :cocktail_ingredient_ids, CocktailIngredient.all, :id, :amount, { label: "Amount" } %>
+    <% end %>
 
-    <li><%= f.collection_check_boxes :ingredient_ids, Ingredient.all.uniq, :id, :name %><br></li>
+
+    <li><%= f.collection_check_boxes :ingredient_ids, Ingredient.all.uniq, :id, :name%><br></li>
 
   <%= f.fields_for :ingredients, cocktail.ingredients.build do |ingredient| %>
     <%= ingredient.label :name, "Other Ingredient" %><br>

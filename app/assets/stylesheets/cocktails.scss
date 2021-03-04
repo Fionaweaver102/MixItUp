@@ -30,7 +30,7 @@ ul.ks-cboxtags li label{
     display: inline-block;
     background-color: rgba(124, 37, 37, 0.9);
     border: 2px solid rgba(139, 139, 139, .3);
-    color: #adadad;
+    color: white;
     border-radius: 25px;
     white-space: nowrap;
     margin: 3px 0px;
@@ -46,6 +46,10 @@ ul.ks-cboxtags li label{
 ul.ks-cboxtags li label {
     padding: 8px 12px;
     cursor: pointer;
+}
+
+ul.ks-cboxtags label{
+  color: white 
 }
 
 ul.ks-cboxtags li label::before {
@@ -202,6 +206,8 @@ input[type=checkbox] {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
+
 
 
 

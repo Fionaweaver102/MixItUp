@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
   before_action :require_login, :find_cocktail, only: [:show, :edit, :update, :destroy]
-  helper_method :params 
+  # helper_method :params 
 
   def index
     @user = current_user
@@ -10,7 +10,7 @@ class CocktailsController < ApplicationController
       ingredient = Ingredient.where(id: params[:ingredient]).first
       @cocktails = ingredient.cocktails
     else 
-      @cocktails = Cocktail.all
+      @cocktails = Cocktail.all.by_cocktail
     end 
  
   end
@@ -41,6 +41,7 @@ class CocktailsController < ApplicationController
       if @cocktail.update(cocktail_params)
       redirect_to cocktail_path(@cocktail)
       else 
+        @error = @cocktail.errors.full_messages 
         render :edit 
       end 
   end 
@@ -53,6 +54,6 @@ class CocktailsController < ApplicationController
   private 
 
   def cocktail_params
-    params.require(:cocktail).permit(:title, :date_created, :image, ingredient_ids: [], ingredient_attributes: [:name])
+    params.require(:cocktail).permit(:title, :date_created, :image, ingredient_ids: [], ingredient_attributes: [:name], cocktail_ingredient_ids: [], cocktail_ingredient_attributes: [:instructions])
   end 
 end

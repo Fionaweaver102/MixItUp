@@ -13,10 +13,6 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @cocktail = Cocktail.find(params[:cocktail_id])
-    find_ingredient
-    @cocktail.ingredients.delete(@cocktail)
-    redirect_to user_cocktail_path(current_user)
   end 
       
   private 

@@ -21,17 +21,17 @@ module CocktailApi
           end 
         end 
 
-        arr.compact.each do |ingredient|
+        arr.compact.each.with_index(1) do |ingredient, index|
+
           @ingredient = Ingredient.find_or_create_by(
             name: ingredient
           )
-        end 
-  
-        @ci = CocktailIngredient.create!(
-            instructions: cocktail["strInstructions"],
+            CocktailIngredient.create!(
+            amount: cocktail["strMeasure#{index}"],
             cocktail_id: @cocktail.id, 
             ingredient_id: @ingredient.id
           )
+        end 
 
       end 
   
