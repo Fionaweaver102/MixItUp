@@ -12,18 +12,11 @@
 
     <%= f.label :image %>
     <%= f.url_field :image %><br>
-
-    <%= f.fields_for :cocktails do |i| %>
-          <%= i.collection_select :cocktail_ingredient_ids, CocktailIngredient.all, :id, :amount, { label: "Amount" } %>
+    
+    <%= f.fields_for :cocktail_ingredients do |ci| %>
+     <li><%= ci.collection_select :ingredient_id, Ingredient.by_name, :id, :name, prompt: true %></li>
+     <%= ci.text_field :amount %>
     <% end %>
-
-
-    <li><%= f.collection_check_boxes :ingredient_ids, Ingredient.all.uniq, :id, :name%><br></li>
-
-  <%= f.fields_for :ingredients, cocktail.ingredients.build do |ingredient| %>
-    <%= ingredient.label :name, "Other Ingredient" %><br>
-    <%= ingredient.text_field :name %>
-  <% end %>
 
     <%= f.date_field :date_created %>
   <%= f.submit %>

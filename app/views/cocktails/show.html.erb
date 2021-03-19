@@ -8,17 +8,13 @@
 
 <div class="tasks">
 <h1>Ingredients Needed </h1>
-  <% @cocktail.ingredients.all.each do |ingredient| %>
-  <label>
-    <h2><%= ingredient.name %></h2>
-  </label>
-  <% end %>
-  
-<p>
-<% @cocktail.cocktail_ingredients.all.each do |f| %>
-  <%= f.amount %>
+
+<% @cocktail.cocktail_ingredients.each do |ci| %>
+<label>
+ <h2> <%= ci.amount %> <%= ci.ingredient.name %> </h2>
+</label>
 <% end %>
-</p>
+<div>
 
 <% if @cocktail.user_id == current_user.id %>
   <button><%= link_to "Edit Cocktail", edit_user_cocktail_path(current_user) %></button>
